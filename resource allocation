@@ -1,0 +1,131 @@
+Recommended Setup
+Host Machine (Windows)
+
+Install:
+
+Oracle VirtualBox
+
+or
+VMware Workstation Player
+VM Requirements
+
+Minimum:
+
+8 GB RAM
+4 CPU cores
+80 GB disk
+
+Recommended:
+
+16 GB RAM
+6+ CPU cores
+100 GB disk
+Step 1 — Download Ubuntu Server
+
+Download Ubuntu 22.04 LTS:
+
+Ubuntu Server ISO
+
+Step 2 — Create Ubuntu VM
+
+Recommended VM settings:
+
+Setting	Value
+RAM	8–16 GB
+CPU	4
+Disk	80 GB
+Network	Bridged Adapter
+
+Install Ubuntu normally.
+
+Step 3 — Login and Update Ubuntu
+sudo apt update && sudo apt upgrade -y
+Step 4 — Install Git
+sudo apt install git -y
+Step 5 — Create stack User
+sudo useradd -s /bin/bash -d /opt/stack -m stack
+
+Set password:
+
+sudo passwd stack
+
+Give sudo access:
+
+echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/stack
+
+Switch user:
+
+su - stack
+Step 6 — Download DevStack
+git clone https://opendev.org/openstack/devstack
+
+Go to directory:
+
+cd devstack
+Step 7 — Create local.conf
+nano local.conf
+
+Paste this:
+
+[[local|localrc]]
+
+ADMIN_PASSWORD=admin
+DATABASE_PASSWORD=admin
+RABBIT_PASSWORD=admin
+SERVICE_PASSWORD=admin
+
+HOST_IP=127.0.0.1
+
+Save:
+
+CTRL + O
+Enter
+CTRL + X
+Step 8 — Install OpenStack
+
+Run:
+
+./stack.sh
+
+This takes 20–45 minutes.
+
+Step 9 — Access OpenStack Dashboard
+
+After installation, open browser:
+
+http://YOUR_VM_IP/dashboard
+
+Username:
+
+admin
+
+Password:
+
+admin
+Find VM IP Address
+
+Run:
+
+ip a
+
+Look for something like:
+
+192.168.x.x
+Useful OpenStack Commands
+Load admin credentials
+source openrc admin admin
+Check services
+openstack service list
+Create network
+openstack network create private-net
+Create VM instance
+openstack server list
+Optional: Use Packstack (Alternative)
+
+For beginners, DevStack is easier.
+
+Packstack is more production-like but mainly supports:
+
+Red Hat Enterprise Linux
+CentOS
+Official Documentation
