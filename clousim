@@ -1,0 +1,154 @@
+You can install CloudSim on Windows for cloud resource allocation and scheduling experiments.
+
+The easiest setup is:
+
+Windows
+Java JDK
+Eclipse IDE
+CloudSim package
+Step 1 — Install Java JDK
+
+Download and install Java JDK (Java 8 recommended for older CloudSim versions):
+
+Recommended
+
+Eclipse Temurin JDK 8
+
+After installation, verify:
+
+java -version
+
+Example output:
+
+java version "1.8.0_xxx"
+Step 2 — Install Eclipse IDE
+
+Download:
+
+Eclipse IDE for Java Developers
+
+Install and open Eclipse.
+
+Step 3 — Download CloudSim
+
+Download CloudSim:
+
+CloudSim GitHub
+
+Or older toolkit:
+
+CloudSim Toolkit
+
+Extract ZIP file.
+
+Step 4 — Import CloudSim into Eclipse
+Open Eclipse
+
+Go to:
+
+File → Import → Existing Projects into Workspace
+
+Select extracted CloudSim folder.
+
+Click:
+
+Finish
+Step 5 — Add Required Libraries
+
+If libraries are missing:
+
+Right click project:
+
+Build Path → Configure Build Path
+
+Add all .jar files from:
+
+jars/
+lib/
+Step 6 — Run Example Program
+
+Open example:
+
+examples/org/cloudbus/cloudsim/examples/CloudSimExample1.java
+
+Run:
+
+Right Click → Run As → Java Application
+Expected Output
+
+You’ll see simulation logs like:
+
+Starting CloudSimExample1...
+Datacenter created
+Broker created
+VM created
+Cloudlet executed
+Simulation finished
+Simple CloudSim Resource Allocation Example
+
+Example VM allocation code:
+
+int vmid = 0;
+int mips = 1000;
+long size = 10000;
+int ram = 512;
+long bw = 1000;
+int pesNumber = 1;
+String vmm = "Xen";
+
+Vm vm = new Vm(vmid, brokerId, mips, pesNumber,
+               ram, bw, size, vmm,
+               new CloudletSchedulerTimeShared());
+
+This creates a VM with:
+
+CPU allocation
+RAM allocation
+Bandwidth allocation
+Important CloudSim Components
+Component	Purpose
+Datacenter	Physical cloud
+Host	Physical server
+VM	Virtual machine
+Cloudlet	User task
+Broker	Resource allocator
+Common Research Areas
+
+Using CloudSim you can implement:
+
+VM scheduling
+Resource allocation
+Load balancing
+Energy-aware scheduling
+Task migration
+SLA optimization
+Optional: CloudSim Plus (Modern Version)
+
+Recommended for new projects:
+
+CloudSim Plus
+
+Benefits:
+
+Better API
+Active maintenance
+Easier coding
+Modern Java support
+Run Using Command Line (Optional)
+
+Compile:
+
+javac CloudSimExample1.java
+
+Run:
+
+java CloudSimExample1
+Recommended Setup for College Projects
+Software	Version
+Java	JDK 8
+Eclipse	Latest
+CloudSim	3.0.3
+OS	Windows 10/11
+Official Documentation
+CloudSim Documentation
+CloudSim Plus Documentation
