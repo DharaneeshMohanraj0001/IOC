@@ -1,0 +1,72 @@
+1. Update Ubuntu packages
+sudo apt update
+2. Install GCC (GNU C Compiler)
+sudo apt install build-essential -y
+This installs:
+
+
+GCC compiler
+
+
+G++ compiler
+
+
+make tools
+
+
+required libraries
+
+
+3. Check compiler installation
+gcc --version
+You should see the GCC version displayed.
+
+Program 1: Hello World
+Create the file
+nano hello.c
+Paste this code
+#include <stdio.h>int main() {    printf("Hello World\n");    return 0;}
+Save and exit
+
+
+Press CTRL + O → Enter
+
+
+Press CTRL + X
+
+
+Compile the program
+gcc hello.c -o hello
+Execute the program
+./hello
+Output:
+Hello World
+
+Program 2: Addition of Two Numbers
+Create the file
+nano add.c
+Paste this code
+#include <stdio.h>int main() {    int a, b, sum;    printf("Enter two numbers: ");    scanf("%d %d", &a, &b);    sum = a + b;    printf("Sum = %d\n", sum);    return 0;}
+Save and exit
+
+
+CTRL + O → Enter
+
+
+CTRL + X
+
+
+Compile
+gcc add.c -o add
+Run
+./add
+Example:
+Enter two numbers: 10 20Sum = 30
+
+Optional: Install VS Code in Ubuntu VM
+Official website: Visual Studio Code
+Install command:
+sudo snap install code --classic
+
+Useful GCC Commands
+CommandPurposegcc file.cCompilegcc file.c -o appCompile with output name./appRun executableclearClear terminallsList files
